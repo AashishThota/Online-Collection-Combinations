@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tailor Shop Website Template</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie7.css"><![endif]-->
+</head>
+<body>
+	<div id="header">
+		<div>
+			<a href="index.jsp" id="logo"><img src="images/ss.png"  width="300" height="150" alt="Logo"></a>
+			<ul>
+				<li class="current">
+					<a href="consulthome.jsp">Home</a>
+				</li>
+				<li >
+					<a href="logout.jsp">Logout</a>
+				</li>
+				</ul>
+		</div>
+	</div>
+<%@ page import="databaseconnection.*,java.sql.*,java.util.Date,java.text.*"%>
+<%!
+Statement stmt,stmt1;
+Connection con;
+ResultSet rs,rs1;
+%>
+	<div id="body">
+		<div id="featured">
+			<h1>World&#39;s Finest and Elegant Tuxedo</h1>
+		</div>
+		<form action="rating.jsp" method="post">
+			<div id="content">
+			<div id="product">
+				<ul>
+					<%int i=0;
+					String designer = request.getParameter("designer");
+					System.out.println("designer==="+designer);
+					con = databasecon.getconnection();
+					stmt = con.createStatement();
+			
+
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				Date date1 = new Date();
+				System.out.println(dateFormat.format(date1)); 
+				
+				String consult_name1 = (String)session.getAttribute("consult_name1");
+					stmt1 = con.createStatement();
+					rs1 = stmt1.executeQuery("select picname from "+consult_name1+" ");
+					//select * from descollection where desname='bhanu' and ranking=0 and date='2015-07-16' and pics not in //(select picname from clouds_fashions)
+					rs = stmt.executeQuery("select * from descollection where desname='"+designer+"' and ranking=0 and date='"+dateFormat.format(date1)+"' and pics not in (select picname from '"+consult_name1+"')");
+					if(rs.next()){
+						String picname = rs.getString("pics");
+						session.setAttribute("picname",picname);
+						String desname = rs.getString("desname");
+						session.setAttribute("desname",desname);
+						String datee = rs.getString("date");
+						session.setAttribute("datee",datee);
+					%>
+					<li>
+					<img src="uploads/<%=rs.getString("pics")%>" alt="Image" width="258" height="348" >
+						<h2><%=rs.getString("caption")%></h2>
+						<p>
+							Designed By:<%=rs.getString("desname")%>
+						</p>
+						Update On:<span><%=rs.getString("date")%></span>
+						<div class="stars">
+  <div class="rating" style="width:65%"></div>
+  <input type="radio" name="rating" id="star5" value="5">
+  <label for="star5"></label>
+  <input type="radio" name="rating" id="star4" value="4">
+  <label for="star4"></label>
+  <input type="radio" name="rating" id="star3" value="3">
+  <label for="star3"></label>
+  <input type="radio" name="rating" id="star2" value="2">
+  <label for="star2"></label>
+  <input type="radio" name="rating" id="star1" value="1">
+  <label for="star1"></label>
+</div>
+	<input class="myButton" type="submit"  value="next>>" />
+					</li>
+					<%
+					}else{
+					out.println("<font color='red'><b>There is no more produced by the designer...!!!!</b></fornt>");
+					%>
+					<a href="viewdesigners.jsp" class="myButton">Go Back</a>
+					<%}
+					%>
+					</ul>
+					<br><br>
+		
+			</div>
+		</div>
+		
+		</form>
+	</div>
+	<%@ include file="footer.jsp"%>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<div id="footer">
+		<div>
+			<div class="first">
+				<h4>Services</h4>
+				<p>
+					Design is the applied art dedicated to the design of clothing and lifestyle accessories created within the cultural and social influences of a specific time.Design differs from costume design due to its core product having a built in obsolescence usually of one to two seasons. A season is defined as either autumn/winter or spring/summer. 
+				</p>
+			</div>
+			<div class="last">
+				<h4>Social</h4>
+				<div>
+					<a href="https://www.facebook.com/cloudtechnologiespro?ref=hl" target="_blank" id="facebook">Facebook</a>
+					<a href="https://twitter.com/cloudtechpro" target="_blank" id="twitter">Twitter</a>
+					<a href="https://www.youtube.com/channel/UCa8LoTEK3XjKc87B5-PlKzw" target="_blank" id="googleplus">Google&#43;</a>
+				</div>
+				
+				
+			</div>
+		</div>
+		<p class="footnote">
+			&copy; Copyright 2017. All rights reserved.
+		</p>
+	</div>

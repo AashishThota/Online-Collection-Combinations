@@ -1,0 +1,4 @@
+<%
+        request.getSession().removeAttribute("aname");
+		response.sendRedirect("index.jsp");
+%>

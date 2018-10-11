@@ -1,0 +1,78 @@
+<html>
+<head>
+<script>
+function DoInit() \
+{
+document.body.style.width = 750;
+document.body.style.height =350;// fixed width, variable height
+}
+
+</script>
+
+<script language="javascript">
+var currPage;
+
+function Next()
+{
+currPage += 1;
+
+
+if (currPage>3)
+{
+currPage= 3 ;
+}
+
+
+switch(currPage)
+{
+case 1:
+document.getElementById('Iframe1').src='5x4(1).html';
+case 2:
+document.getElementById('Iframe1').src='5x4(2).html';
+case 3:
+document.getElementById('Iframe1').src='5x4(3).html';
+break;
+default:
+
+}
+
+}
+function Back()
+{
+
+currPage -= 1;
+
+
+if (currPage<1)
+{
+currPage= 1 ;
+}
+
+switch(currPage)
+{
+case 1:
+document.getElementById('Iframe1').src='5x4(1).html';
+break;
+case 2:
+document.getElementById('Iframe1').src='5x4(2).html';
+break;
+case 3:
+document.getElementById('Iframe1').src='5x4(3).html';
+break;
+default:
+
+}
+}
+</script>
+</head>
+<body onload="DoInit()">
+<p><b> INFINEON MONITORING CHAMBER
+</b></p>
+<iframe id="Iframe1"	frameborder="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" width="600" scrolling="yes" height="550" src="5x4(1).html">
+</iframe>
+</br>
+<input type="button" onClick="Iframe1('Back');" value="Back" />
+<input type="button" onClick="Iframe1('Next');" value="Next" />
+
+</body>
+</html>

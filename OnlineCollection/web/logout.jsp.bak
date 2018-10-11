@@ -1,0 +1,16 @@
+<%@ page import="databaseconnection.*,java.sql.*"%>
+<%!
+Statement stmt,stmt,;
+Connection con;
+ResultSet rs;
+%>
+<%
+con = databasecon.getconnection();
+stmt = con.createStatement();
+stmt1 = con.createStatement();
+rs = stmt.executeQuery("select  * from descollection");
+while(rs.next()){
+stmt1.executeUpdate("update descollection set ranking=0 where desid='"+rs.getString("desid")+"'");
+}
+response.sendRedirect("index.jsp");
+%>

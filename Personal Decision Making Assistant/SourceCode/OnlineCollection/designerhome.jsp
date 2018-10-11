@@ -1,0 +1,69 @@
+<%@ include file="desheader.jsp"%>
+<%@  page import="java.util.*,java.text.*"%>
+<%
+String msg = request.getParameter("msg");
+if(msg != null){
+out.println("<script>alert('Successfull Login..!!')</script>");
+}
+
+String updmsg = request.getParameter("updmsg");
+if(updmsg != null){
+out.println("<script>alert('Successfull Uploded..!!')</script>");
+out.println("<script>alert('You Want Try again???')</script>");
+}
+
+String updmsg1 = request.getParameter("updmsg1");
+if(updmsg1 != null){
+out.println("<script>alert('Unsuccessfull Uploded..!! Tray Again..')</script>");
+}
+%>
+	<div id="body">
+		<div id="featured">
+			<div class="first">
+				<form action ="designupload.jsp" method="post">
+				<h3>Welcome  <% 
+					String str=(String)session.getAttribute("name");
+					%><font color="red"><%=str%></font></h3>
+				<table>
+				<tr>
+				<td><h2 color="yellow"><i><strong>Provide Your Designing Details</strong></i></h2></td>
+				</tr>
+				<%
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				Date date1 = new Date();
+				System.out.println(dateFormat.format(date1)); 
+				%>
+				<tr>
+				<td>Date:</td><td><input type="text" id="newsletter"  name="date" value="<%=dateFormat.format(date1)%>" readonly/></td>
+				</tr>
+				<tr>
+				<td>Caption:</td><td><input type="text" id="newsletter"  name="caption" required/></td>
+				</tr>
+				<tr>
+				<td>Upload Designing Pic:</td><td><input type="file" name="pics" required/></td>
+				</tr>
+				<tr>&nbsp;&nbsp;&nbsp;</tr>
+								<tr>&nbsp;&nbsp;&nbsp;</tr>				<tr>&nbsp;&nbsp;&nbsp;</tr>
+				<tr>
+				<td><input type="submit" class="myButton" value="Upload" /></td><td><input type="reset" class="myButton" value="Reset"/></td>
+				</tr>
+
+				</table>
+				</form>	
+		</div>
+			<div class="last">
+			<marquee behavior="alternate" scrolldelay="300" ><img src="adfd.jpg" width="240" height="120" alt="Natural" /></marquee>
+			
+			</div>
+		</div>
+		<div id="content">
+			<div id="home">
+				<marquee behavior="scroll" direction="left" scrolldelay="20"><font color="yellow"><img src="images.png" width="50" height="50" alt="Natural" />You Could Say I Have A Passion For Handmade Fashion!<img src="images.png" width="50" height="50" alt="Natural" /> I Enjoy Testing Out, Trying And Tweaking Designer Patterns On The Market As Well As Creating Designs Of My Own!<img src="images.png" width="50" height="50" alt="Natural" /> Check Out My Online Pattern Store To Learn How To Create Simple And Flattering Designs Perfect For Beginning Your Own Handmade Wardrobe!<img src="images.png" width="50" height="50" alt="Natural" /></font></marquee>
+			</div>
+		</div>
+	</div>
+	
+<%@ include file="footer.jsp"%>
+
+</body>
+</html>
